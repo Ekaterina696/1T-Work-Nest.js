@@ -7,6 +7,8 @@ import { CategoryModule } from './category/category.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { Category } from './category/entities/category.entity';
+import { Product } from 'src/products/entities/product.entity';
+import { User } from './users/entities/user.entity';
 
 @Module({
   imports: [
@@ -17,7 +19,7 @@ import { Category } from './category/entities/category.entity';
       username: 'root',
       password: '',
       database: '1t_nest',
-      entities: [Category],
+      entities: [Category, Product, User],
       synchronize: true,
     }),
     UsersModule,
