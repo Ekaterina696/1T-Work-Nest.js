@@ -9,6 +9,7 @@ import { DataSource } from 'typeorm';
 import { Category } from './category/entities/category.entity';
 import { Product } from 'src/products/entities/product.entity';
 import { User } from './users/entities/user.entity';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { User } from './users/entities/user.entity';
     UsersModule,
     ProductsModule,
     CategoryModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
