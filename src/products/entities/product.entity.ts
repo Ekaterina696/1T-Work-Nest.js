@@ -4,20 +4,22 @@ import { ApiProperty } from '@nestjs/swagger';
 
 @Entity()
 export class Product {
-    @ApiProperty({
-    minimum: 1
-    })
-    @PrimaryGeneratedColumn()
-    id: number;
+  @ApiProperty({
+    minimum: 1,
+  })
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @ApiProperty()
-    @Column()
-    title: string;
+  @ApiProperty()
+  @Column()
+  title: string;
 
-    @ApiProperty()
-    @Column()
-    description: string;
+  @ApiProperty()
+  @Column()
+  description: string;
 
-    @ManyToOne(type => Category, category => category.products, {eager: true})
-    category: Category;
+  @ManyToOne(() => Category, (category) => category.products, {
+    eager: true,
+  })
+  category: Category;
 }

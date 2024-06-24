@@ -9,7 +9,7 @@ import { Category } from './entities/category.entity';
 export class CategoryService {
   constructor(
     @InjectRepository(Category)
-    private categoryRepository: Repository<Category>
+    private categoryRepository: Repository<Category>,
   ) {}
 
   create(categoryData: CreateCategoryDto) {
@@ -21,11 +21,11 @@ export class CategoryService {
   }
 
   findOne(id: number) {
-    return this.categoryRepository.findOneBy({id});
+    return this.categoryRepository.findOneBy({ id });
   }
 
   update(id: number, data: UpdateCategoryDto) {
-    return this.categoryRepository.save({data, id});
+    return this.categoryRepository.save({ data, id });
   }
 
   remove(id: number) {

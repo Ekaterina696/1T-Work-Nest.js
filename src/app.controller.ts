@@ -10,7 +10,7 @@ import { ApiTags } from '@nestjs/swagger';
 export class AppController {
   constructor(
     private readonly usersService: UsersService,
-    private authService: AuthService
+    private authService: AuthService,
   ) {}
 
   @Post('auth/register')

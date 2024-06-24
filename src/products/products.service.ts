@@ -9,8 +9,8 @@ import { Product } from './entities/product.entity';
 export class ProductsService {
   constructor(
     @InjectRepository(Product)
-    private productsRepository: Repository<Product>
-  ) { }
+    private productsRepository: Repository<Product>,
+  ) {}
 
   create(productsData: CreateProductDto) {
     return this.productsRepository.save(productsData);
@@ -21,11 +21,11 @@ export class ProductsService {
   }
 
   findOne(id: number) {
-    return this.productsRepository.findOneBy({id});
+    return this.productsRepository.findOneBy({ id });
   }
 
   update(id: number, productsData: UpdateProductDto) {
-    return this.productsRepository.save({ productsData, id});
+    return this.productsRepository.save({ productsData, id });
   }
 
   remove(id: number) {
