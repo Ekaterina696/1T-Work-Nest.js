@@ -12,6 +12,10 @@ import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UseInterceptors } from '@nestjs/common/decorators';
+import { UploadedFile } from '@nestjs/common/decorators';
+
 
 @ApiTags('Categories')
 @Controller('category')
@@ -44,5 +48,11 @@ export class CategoryController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.categoryService.remove(+id);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
   }
 }
