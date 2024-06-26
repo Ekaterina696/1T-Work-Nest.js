@@ -10,6 +10,8 @@ import { Category } from './category/entities/category.entity';
 import { Product } from 'src/products/entities/product.entity';
 import { User } from './users/entities/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { BullModule } from '@nestjs/bull';
+import { ModerationModule } from './moderation/moderation.module';
 
 @Module({
   imports: [
@@ -23,10 +25,17 @@ import { AuthModule } from './auth/auth.module';
       entities: [Category, Product, User],
       synchronize: true,
     }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
     UsersModule,
     ProductsModule,
     CategoryModule,
     AuthModule,
+    ModerationModule
   ],
   controllers: [AppController],
   providers: [AppService],
